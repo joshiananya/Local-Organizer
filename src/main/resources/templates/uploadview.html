@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>ReOrganizer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<style>
+	.manual_file{
+	  padding:5px 10px; 
+	  position:relative;
+	  color:#fff;
+	  border-radius:2px;
+	  text-align:center;
+	  cursor:pointer
+	}
+	.hide_file {
+	    position: absolute;
+	    z-index: 1000;
+	    opacity: 0;
+	    cursor: pointer;
+	    right: 0;
+	    top: 0;
+	    height: 100%;
+	    font-size: 24px;
+	    width: 100%;
+	}
+	#sticky-footer {
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+	}
+	.col-sm-5{
+		background:#dadada!important;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background:#e0e0e0;">
+	<!-- Grey with black text -->
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+	  <ul class="navbar-nav">
+	    <li class="nav-item active">
+	      <a class="nav-link" href="#">Re-Organizer</a>
+	    </li>
+	  </ul>
+	</nav>
+
+	<div class="container">
+		<h4 class="text-center text-dark">ReOrganizer.</h4>
+		<div class="row text-white pt-5">
+			<div class="col-sm-5 p-4">
+				<p class="text-center text-dark">Re - Organize your files.</p>
+				<br>
+				<form action="/upload" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label class="text-dark">Path to Store :</label>
+						<input type="text" name="basic"  class="form-control">
+					</div>
+					<div class="form-group">
+					    <div class="manual_file bg-success file-upload">
+							<input type="file" name="files" multiple class="hide_file">
+							<p class="file-name">Choose a file/ files.</p>
+						</div>
+						<br>
+						<input type="submit" value="Upload Files" class="btn btn-danger btn-block"></input>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-5 p-4">
+				<p class="text-center text-dark">Selected Files:.</p>
+				<br>
+				<div class="bg-warning p-2">
+					<p id="added_file_name"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="sticky-footer" class="py-3 bg-dark text-white-50">
+		<div class="text-center">
+			<small id="footer-live">Copyright &copy; 2020 <a href="https://github.com/joshiananya">Ananya Joshi</a> | All rights reserved.
+			</small>
+		</div>
+	</footer>
+	<script>
+		jQuery(function($) {
+		  $('input[type="file"]').change(function() {
+				var names = [];
+				for (var i = 0; i < $(this).get(0).files.length; ++i) {
+				    names.push($(this).get(0).files[i].name + "<br>");
+				}
+		         $(this).closest('.file-upload').find('.file-name').html("Choose More");
+		         $('#added_file_name').append(names);
+		    
+		  });
+		});
+	</script>
+</body>
+</html>

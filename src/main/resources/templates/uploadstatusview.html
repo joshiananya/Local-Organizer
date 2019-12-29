@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head xmlns:th="http://www.thymleaf.org">
+		<meta charset="ISO-8859-1">
+		<title>ReOrganizer</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body style="background:#009688;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="text-center text-white">Re- Organize your files.</h1>
+			</div>
+		</div>
+	</div>
+		<div th:if="${msg}">
+		<span th:text="${
+		msg}"></span>
+		<div>
+		<span>
+		<a href="/">Upload  more </a>
+		</span>
+		</div>
+		</div>
+	</body>
+</html>
