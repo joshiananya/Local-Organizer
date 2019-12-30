@@ -59,7 +59,7 @@ public class FileUploadController {
 			Path fileNameAndPath2 = Paths.get(basic,file.getOriginalFilename());
 			
 			System.out.println(fileNameAndPath2);
-			
+			basic = userPath;
 			try
 			{
 				Files.write(fileNameAndPath2, file.getBytes());
@@ -77,7 +77,7 @@ public class FileUploadController {
 	public static String getExtension(String fileName)
 	{
 		int index=fileName.lastIndexOf(".");
-		String ext=fileName.substring(index+1).toString();
+		String ext=fileName.substring(index+1);
 		System.out.println(ext);
 	    if(ext.trim().equalsIgnoreCase("gz"))		
 	    {
